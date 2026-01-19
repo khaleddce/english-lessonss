@@ -63,6 +63,27 @@
 </form>
 
 <script>
+  const scriptURL = '  const scriptURL = 'https://script.google.com/macrhttps://script.google.com/macros/s/AKfycbzOHXYN79_0p0R1ZUi12XeL3MLt6oMCpJhtAi1KyDXbqRN9z4x4-Zq-K9lYvD5cA65O/execos/s/AKfycbyQolSWnpIktYI868mjHafH8KiguL6P89AVTIuNxW1gsO0g2_VlPrRo11ZpEEK0bmUa/exec';
+'
+  const form = document.getElementById('studentForm')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    document.getElementById('submitBtn').disabled = true
+    document.getElementById('submitBtn').innerHTML = "جاري الإرسال..."
+    
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          alert("تم تسجيل بياناتك بنجاح يا بطل! سنقوم بالتواصل معك.")
+          document.getElementById('submitBtn').disabled = false
+          document.getElementById('submitBtn').innerHTML = "إرسال البيانات"
+          form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+<script>
   const scriptURL = 'رابط_الذي_نسخته_من_جوجل_هنا'
   const form = document.getElementById('studentForm')
 
@@ -122,3 +143,4 @@
 </body>
 
 </html>
+
