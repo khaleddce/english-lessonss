@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع مس اميره - لتعلم اللغة الإنجليزية</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
+        header { background: #2c3e50; color: white; padding: 20px text-align: center; }
+        .container { max-width: 800px; margin: 20px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1, h2 { color: #b65a83; text-align: center; }
+        .services { display: flex; justify-content: space-around; margin: 20px 0; }
+        .card { background: #e8f4f8; padding: 15px; border-radius: 8px; width: 40%; text-align: center; }
+        
+        /* تصميم الفورم */
+        form { display: flex; flex-direction: column; gap: 15px; }
+        label { font-weight: bold; }
+        input, select, textarea { padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+        button { background: #27ae60; color: white; padding: 12px; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; transition: 0.3s; }
+        button:hover { background: #219150; }
+        .success-msg { color: green; text-align: center; display: none; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>مس [أميره درويش ]</h1>
+    <p>خبير تدريس اللغة الإنجليزية للمراحل التعليمية المختلفة</p>
+</header>
+
+<div class="container">
+    <section>
+        <h2>خدماتنا التعليمية</h2>
+        <div class="services">
+            <div class="card">
+                <h3>حصص أوفلاين</h3>
+                <p>في السنتر أو دروس خصوصية</p>
+            </div>
+            <div class="card">
+                <h3>حصص أونلاين</h3>
+                <p>عبر Zoom أو منصات التعليم</p>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="register">
+        <h2>سجل بياناتك للإشتراك</h2>
+   <form id="registrationForm">
+            <label>اسم الطالب بالكامل:</label>
+            <input type="text" id="name" placeholder="أدخل اسمك" required>
+
+            <label>رقم الهاتف (واتساب):</label>
+            <input type="tel" id="phone" placeholder="01xxxxxxxxx" required>
+
+            <label>المرحلة الدراسية:</label>
+            <select id="level">
+                <option value="ابتدائي">ابتدائي</option>
+                <option value="إعدادي">إعدادي</option>
+                <option value="ثانوي">ثانوي</option>
+                <option value="كورس حر">كورس لغة عام</option>
+            </select>
+
+            <label>نوع الدراسة المفضل:</label>
+            <div>
+                <input type="radio" name="mode" value="Online" checked> أونلاين
+                <input type="radio" name="mode" value="Offline"> أوفلاين
+            </div>
+
+            <button type="submit">إرسال البيانات</button>
+        </form>
+
+<script>
+  const scriptURL = 'رابط_الذي_نسخته_من_جوجل_هنا'
+  const form = document.getElementById('studentForm')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    document.getElementById('submitBtn').disabled = true
+    document.getElementById('submitBtn').innerHTML = "جاري الإرسال..."
+    
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          alert("تم تسجيل بياناتك بنجاح يا بطل! سنقوم بالتواصل معك.")
+          document.getElementById('submitBtn').disabled = false
+          document.getElementById('submitBtn').innerHTML = "إرسال البيانات"
+          form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script></form>
+        <div id="success" class="success-msg">تم استلام بياناتك بنجاح! سنتواصل معك قريباً.</div>
+    </section>
+</div>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // منع الصفحة من التحميل
+        
+        // هنا يمكنك إضافة كود لإرسال البيانات لقاعدة بيانات
+        const name = document.getElementById('name').value;
+        console.log("تم تسجيل طالب جديد باسم: " + name);
+
+        // إظهار رسالة نجاح
+        document.getElementById('success').style.display = 'block';
+        this.reset(); // مسح البيانات من الفورم
+    });
+</script>
+
+</body>
+</html>
