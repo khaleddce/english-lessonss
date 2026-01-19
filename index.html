@@ -81,46 +81,10 @@
       })
       .catch(error => console.error('Error!', error.message))
   })
-</script>
 
-<script>
-  const scriptURL = 'رابط_الذي_نسخته_من_جوجل_هنا'
-  const form = document.getElementById('studentForm')
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    document.getElementById('submitBtn').disabled = true
-    document.getElementById('submitBtn').innerHTML = "جاري الإرسال..."
-    
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-          alert("تم تسجيل بياناتك بنجاح يا بطل! سنقوم بالتواصل معك.")
-          document.getElementById('submitBtn').disabled = false
-          document.getElementById('submitBtn').innerHTML = "إرسال البيانات"
-          form.reset()
-      })
-      .catch(error => console.error('Error!', error.message))
-  })
-</script>
 
-<script>
-  const scriptURL = 'رابط_الذي_نسخته_من_جوجل_هنا'
-  const form = document.getElementById('studentForm')
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    document.getElementById('submitBtn').disabled = true
-    document.getElementById('submitBtn').innerHTML = "جاري الإرسال..."
-    
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-          alert("تم تسجيل بياناتك بنجاح يا بطل! سنقوم بالتواصل معك.")
-          document.getElementById('submitBtn').disabled = false
-          document.getElementById('submitBtn').innerHTML = "إرسال البيانات"
-          form.reset()
-      })
-      .catch(error => console.error('Error!', error.message))
-  })
 </script></form>
         <div id="success" class="success-msg">تم استلام بياناتك بنجاح! سنتواصل معك قريباً.</div>
     </section>
@@ -143,4 +107,5 @@
 </body>
 
 </html>
+
 
