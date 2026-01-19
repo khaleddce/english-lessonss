@@ -47,29 +47,40 @@
 
     <section id="register">
         <h2>سجل بياناتك للإشتراك</h2>
-   <form id="registrationForm">
-            <label>اسم الطالب بالكامل:</label>
-            <input type="text" id="name" placeholder="أدخل اسمك" required>
+<form id="studentForm">
+    <input type="text" name="Name" placeholder="اسم الطالب" required>
+    <input type="tel" name="Phone" placeholder="رقم الواتساب" required>
+    <select name="Level">
+        <option value="ابتدائي">ابتدائي</option>
+        <option value="إعدادي">إعدادي</option>
+        <option value="ثانوي">ثانوي</option>
+    </select>
+    <select name="Mode">
+        <option value="Online">أونلاين</option>
+        <option value="Offline">أوفلاين</option>
+    </select>
+    <button type="submit" id="submitBtn">إرسال البيانات</button>
+</form>
 
-            <label>رقم الهاتف (واتساب):</label>
-            <input type="tel" id="phone" placeholder="01xxxxxxxxx" required>
+<script>
+  const scriptURL = 'رابط_الذي_نسخته_من_جوجل_هنا'
+  const form = document.getElementById('studentForm')
 
-            <label>المرحلة الدراسية:</label>
-            <select id="level">
-                <option value="ابتدائي">ابتدائي</option>
-                <option value="إعدادي">إعدادي</option>
-                <option value="ثانوي">ثانوي</option>
-                <option value="كورس حر">كورس لغة عام</option>
-            </select>
-
-            <label>نوع الدراسة المفضل:</label>
-            <div>
-                <input type="radio" name="mode" value="Online" checked> أونلاين
-                <input type="radio" name="mode" value="Offline"> أوفلاين
-            </div>
-
-            <button type="submit">إرسال البيانات</button>
-        </form>
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    document.getElementById('submitBtn').disabled = true
+    document.getElementById('submitBtn').innerHTML = "جاري الإرسال..."
+    
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          alert("تم تسجيل بياناتك بنجاح يا بطل! سنقوم بالتواصل معك.")
+          document.getElementById('submitBtn').disabled = false
+          document.getElementById('submitBtn').innerHTML = "إرسال البيانات"
+          form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
 <script>
   const scriptURL = 'رابط_الذي_نسخته_من_جوجل_هنا'
@@ -109,4 +120,5 @@
 </script>
 
 </body>
+
 </html>
